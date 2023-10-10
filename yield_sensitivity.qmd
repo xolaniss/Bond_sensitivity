@@ -1,0 +1,56 @@
+---
+title: "SA 10 year bond sensitivity estimate"
+format: 
+  pptx:
+    fig-pos: "H"
+    dpi: 500
+---
+
+
+
+```{r}
+library(readr)
+library(here)
+yields <- read_rds(here("Outputs", "artifacts_yields.rds"))
+```
+
+
+## Yields rose significantly in recent months 
+
+:::: {.columns}
+
+::: {.column width="60%"}
+```{r yields, echo = FALSE, message=FALSE, dpi=500, fig.width=6}
+yields$graphs$us_yield_gg
+```
+:::
+
+::: {.column width="40%"}
+```{r cars, echo = FALSE, message=FALSE, dpi=500, fig.width=6}
+yields$graphs$sa_yield_gg
+```
+:::
+
+::::
+
+
+## The rolling window estimates suggests a marked increase in sensitivity
+
+:::: {.columns}
+
+::: {.column width="60%"}
+```{r estimate, echo = FALSE, message=FALSE, dpi=500, fig.width=6}
+yields$graphs$graphs_gg
+```
+:::
+
+::: {.column width="40%"}
+- The sample is from the year 2000 to September 2023 with a monthly frequency
+- OLS estimates with a 36 month (3 year window) meaning that we estimate each month with 36 observations and roll until the end of the sample
+- The post Covid period similar to the period post the financial crisis has seen a  significant increase in the sensitivity
+:::
+
+::::
+
+
+

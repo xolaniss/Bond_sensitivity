@@ -1,0 +1,28 @@
+---
+title: "SA 10 year bond sensitivity estimates"
+date: "2023-10-09"
+output: powerpoint_presentation
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+```
+
+
+```{r}
+library(readr)
+library(here)
+yields <- read_rds(here("Outputs", "artifacts_yields.rds"))
+```
+
+
+## Slide with R Output
+
+```{r cars, echo = TRUE}
+yields$graphs$graphs_gg
+```
+
+
+
