@@ -113,7 +113,9 @@ combined_yield_tbl <-
 combined_yield_tbl %>% skim()
 
 # Graphing ---------------------------------------------------------------
-
+combined_yield_tbl %>% 
+  fx_plot() +
+  labs(y = "yield (%)")
 
 # Export ---------------------------------------------------------------
 artifacts_ <- list (
