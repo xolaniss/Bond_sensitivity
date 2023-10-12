@@ -4,7 +4,7 @@ function (data, plotname = " ", variables_color = 12) {
     pivot_longer(data,-Date, names_to = "Series", values_to = "Value"),
     aes(x = Date, y = Value, col = Series)
   ) +
-    geom_line() +
+    geom_line(linewidth = 1) +
     facet_wrap (. ~ Series, scale = "free") +
     theme_bw() +
     theme(
@@ -17,11 +17,40 @@ function (data, plotname = " ", variables_color = 12) {
       strip.background = element_rect(colour = "white", fill = "white"),
       axis.text.x = element_text(angle = 90),
       axis.title = element_text(size = 10),
-      plot.tag = element_text(size = 10)
+      plot.tag = element_text(size = 10),
+      plot.title = element_text(face = "bold")
     ) +
     labs(x = "", y = plotname) +
     scale_color_manual(values = pnw_palette("Shuksan2", variables_color))
 }
+
+
+fx_plot_combined <-
+  function (data, plotname = " ", variables_color = 6) {
+    ggplot(
+      pivot_longer(data,-Date, names_to = "Series", values_to = "Value"),
+      aes(x = Date, y = Value, col = Series)
+    ) +
+      geom_line(linewidth = 1) +
+      theme_bw() +
+      theme(
+        legend.position = "bottom",
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank()
+      ) +
+      theme(
+        text = element_text(size = 10),
+        strip.background = element_rect(colour = "white", fill = "white"),
+        axis.text.x = element_text(angle = 90),
+        axis.title = element_text(size = 10),
+        plot.tag = element_text(size = 10),
+        legend.title = element_blank(),
+        plot.title = element_text(face = "bold")
+      ) +
+      labs(x = "", y = plotname) +
+      scale_color_manual(values = pnw_palette("Shuksan2", variables_color))
+  }
+
 
 pivot <- function(data){
   result <- 

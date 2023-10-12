@@ -12,34 +12,27 @@ format:
 library(readr)
 library(here)
 yields <- read_rds(here("Outputs", "artifacts_yields.rds"))
+country <- read_rds(here("Outputs", "artifacts_country_comparison.rds"))
 ```
 
 
-## Yields rose significantly in recent months 
+# Yields rose significantly in recent months 
+
+
+```{r yields, echo = FALSE, message=FALSE, dpi=500}
+yields$graphs$yield_gg
+```
+
+
+
+
+
+# The rolling window estimates suggests a marked increase in sensitivity
 
 :::: {.columns}
 
 ::: {.column width="60%"}
-```{r yields, echo = FALSE, message=FALSE, dpi=500, fig.width=6}
-yields$graphs$us_yield_gg
-```
-:::
-
-::: {.column width="40%"}
-```{r cars, echo = FALSE, message=FALSE, dpi=500, fig.width=6}
-yields$graphs$sa_yield_gg
-```
-:::
-
-::::
-
-
-## The rolling window estimates suggests a marked increase in sensitivity
-
-:::: {.columns}
-
-::: {.column width="60%"}
-```{r estimate, echo = FALSE, message=FALSE, dpi=500, fig.width=6}
+```{r estimate, echo = FALSE, message=FALSE, dpi=500, fig.width=8}
 yields$graphs$graphs_gg
 ```
 :::
@@ -52,5 +45,30 @@ yields$graphs$graphs_gg
 
 ::::
 
+```{r country, echo = FALSE, message=FALSE, dpi=500, fig.width=8}
+
+```
+
+# Country comparison
 
 
+```{r country1, echo = FALSE, message=FALSE, dpi=500, fig.width=10}
+country$graphs$combined_yield_gg 
+```
+
+# Country 1
+
+```{r country2, echo = FALSE, message=FALSE, dpi=500, fig.width=8}       
+country$graphs$ols_full_gg
+```
+
+# Country 2
+```{r country3, echo = FALSE, message=FALSE, dpi=500, fig.width=8}
+country$graphs$graphs_gg
+```
+
+# Country 3
+
+```{r country4, echo = FALSE, message=FALSE, dpi=500, fig.width=6}
+country$graphs$sensitivity_range_gg
+```
